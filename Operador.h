@@ -8,7 +8,7 @@ class Operador : public Object
 	protected:
 	char signo;
 	public:
-		Operador();
+		Operador(char);
 		~Operador();
 	
 };

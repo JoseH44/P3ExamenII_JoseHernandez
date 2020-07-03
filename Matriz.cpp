@@ -41,6 +41,9 @@ char Matriz::getNombre(){
 	return nombre;
 }
 
+int** Matriz::getMatriz(){
+	return matriz;
+}
 
 Matriz::~Matriz()
 {

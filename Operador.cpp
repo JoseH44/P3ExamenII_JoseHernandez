@@ -1,7 +1,8 @@
 #include "Operador.h"
 
-Operador::Operador():Object()
+Operador::Operador(char pSigno):Object()
 {
+	signo = pSigno;
 }
 
 Operador::~Operador()

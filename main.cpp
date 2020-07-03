@@ -4,6 +4,7 @@ using namespace std;
 #include <string>
 using std::string;
 using std::stoi;
+using std::find;
 
 #include<Math.h>
 
@@ -29,15 +30,22 @@ vector<int> parseo(string);
 
 int main(int argc, char** argv) {
 	string entrada = "";
+	string buffer = "";
 	vector<int> arreglo;
+	size_t found1;
+	size_t found2;
 	int size;
 	char name;
+	vector<Matriz*> lista_matrices;
 	while(entrada != "exit"){
 		cout<<endl<<">>";
 		
 		cin>>entrada;
-		
-		if(entrada != "exit"){
+		found1 = entrada.find('+');
+		found2 = entrada.find('-');
+		if(found1 != std::string::npos || found2 != std::string::npos ){
+			
+		}else if(entrada != "exit"){
 			arreglo = parseo(entrada);
 			size = sqrt(arreglo.size());
 			if(size*size == arreglo.size()){
@@ -48,20 +56,24 @@ int main(int argc, char** argv) {
 				escritura.close();
 				//fin del guardado
 				name  = entrada[0];
-				Object* obj1 = new Matriz(arreglo,size,name);
-				Matriz* matrix  = dynamic_cast<Matriz*>(obj1);
+				Matriz* matrix1 = new Matriz(arreglo,size,name);
+				lista_matrices.push_back(matrix1);
 				cout<<endl;
-				matrix->printMatriz();
+				matrix1->printMatriz();
 			}else
 				cout<<endl<<"Debe ingresar un tamano de arreglo adecuado";
 				
 			//validacion para que sea un cuadrado perfecto	
 			
-		}//validacion para que no guarde exit
+		}
 		
 	}
 	
+	for(int i = 0;i<lista_matrices.size();i++){
+		delete lista_matrices[i];
+	}
 	
+	lista_matrices.clear();
 	
 	return 0;
 }

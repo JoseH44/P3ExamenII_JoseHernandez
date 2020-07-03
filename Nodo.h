@@ -10,7 +10,9 @@ class Nodo
 		Object* data;
 	public:
 		Nodo();
+		//setter y getter de nodo
 		Nodo* getNextNodo();
+		void setNextNodo(Nodo*);
 		Object* getData();
 		~Nodo();
 	protected:

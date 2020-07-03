@@ -12,6 +12,11 @@ Object* Nodo::getData(){
 	return data;
 }
 
+
+void Nodo::setNextNodo(Nodo* pNextNodo){
+	next_nodo = pNextNodo;
+}
+
 Nodo::~Nodo()
 {
 }

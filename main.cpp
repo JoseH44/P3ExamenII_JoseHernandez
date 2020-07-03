@@ -13,6 +13,7 @@ using std::vector;
 #include "Object.h"
 #include "Nodo.h"
 #include "Matriz.h"
+#include "Stack.h"
 
 
 #include <fstream>

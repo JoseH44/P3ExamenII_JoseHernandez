@@ -30,26 +30,33 @@ int main(int argc, char** argv) {
 	string entrada = "";
 	vector<int> arreglo;
 	int size;
+	char name;
 	while(entrada != "exit"){
 		cout<<endl<<">>";
 		
 		cin>>entrada;
 		
 		if(entrada != "exit"){
-			//guardado en el archivo de texto
-			ofstream escritura;
-			escritura.open("matrices.txt",std::ios::out | std::ios::app);
-			escritura<<entrada<<"\n";
-			escritura.close();
-			//fin del guardado
 			arreglo = parseo(entrada);
 			size = sqrt(arreglo.size());
+			if(size*size == arreglo.size()){
+				//guardado en el archivo de texto
+				ofstream escritura;
+				escritura.open("matrices.txt",std::ios::out | std::ios::app);
+				escritura<<entrada<<"\n";
+				escritura.close();
+				//fin del guardado
+				name  = entrada[0];
+				Object* obj1 = new Matriz(arreglo,size,name);
+				Matriz* matrix  = dynamic_cast<Matriz*>(obj1);
+				cout<<endl;
+				matrix->printMatriz();
+			}else
+				cout<<endl<<"Debe ingresar un tamano de arreglo adecuado";
+				
+			//validacion para que sea un cuadrado perfecto	
 			
-			Object* obj1 = new Matriz(arreglo,size);
-			Matriz* matrix  = dynamic_cast<Matriz*>(obj1);
-			cout<<endl;
-			matrix->printMatriz();
-		}
+		}//validacion para que no guarde exit
 		
 	}
 	
@@ -62,6 +69,7 @@ vector<int> parseo(string cadena){
 	
 	int valor,entero;
 	string numero;
+	
 	vector<int> lista_numeros;
 	for(int i = 0;i<cadena.size();i++){
 		valor = (int)cadena[i];
@@ -69,7 +77,7 @@ vector<int> parseo(string cadena){
 		numero+=cadena[i];
 		if(valor>47 && valor<58){
 			numero = cadena[i];
-			cout<<numero;
+			
 			entero = stoi(numero);
 			lista_numeros.push_back(entero);
 		}

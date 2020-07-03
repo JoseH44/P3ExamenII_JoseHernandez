@@ -15,7 +15,7 @@ class Matriz : public Object
 		char nombre;
 		int** matriz;
 	public:
-		Matriz(vector<int>,int);
+		Matriz(vector<int>,int,char);
 		int getSize();
 		char getNombre();
 		void printMatriz();

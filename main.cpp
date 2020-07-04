@@ -15,6 +15,7 @@ using std::vector;
 #include "Nodo.h"
 #include "Matriz.h"
 #include "Stack.h"
+#include "Operador.h"
 
 
 #include <fstream>
@@ -54,6 +55,7 @@ int main(int argc, char** argv) {
 		}
 	}
 	lectura.close();
+	//fin de lectura
 	
 	string entrada = "";
 	
@@ -71,10 +73,20 @@ int main(int argc, char** argv) {
 		found2 = entrada.find('-');
 		if(found1 != std::string::npos || found2 != std::string::npos ){
 			//for que recorre la cadena para saber la operacion;
-			for(int i = 0;i<entrada.size();i++){
-				for(int j=0;lista_matrices.size();i++){
+			Stack* stack = new Stack();
+			for(int i = entrada.size();i >= 0;i--){
+				for(int j=0;lista_matrices.size();j++){
 					if(entrada[i] == lista_matrices[j]->getNombre()){
-						
+						Nodo* newNodo = new Nodo(lista_matrices[j]);
+						stack->push(newNodo);
+					}else if(entrada[i] == '-'){
+						Operador* operador = new Operador('-');
+						Nodo* newNodo = new Nodo(operador);
+						stack->push(newNodo);
+					}else if(entrada[i]=='+'){
+						Operador* operador = new Operador('+');
+						Nodo* newNodo = new Nodo(operador);
+						stack->push(newNodo);
 					}
 				}
 			}

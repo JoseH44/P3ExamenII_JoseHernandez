@@ -28,15 +28,41 @@ using std::ifstream;
 
 vector<int> parseo(string);
 
+
 int main(int argc, char** argv) {
+	vector<Matriz*> lista_matrices;
+	
+	string linea;
+	int sizeCarga;
+	char nombreCarga;
+	vector<int> arregloCarga;
+	
+	//lectura de archivos
+	ifstream lectura;
+	lectura.open("matrices.txt",std::ios::in);
+	if(lectura.is_open()){
+		while(!lectura.eof()){
+			string buffer;
+			getline(lectura,buffer);
+			linea = buffer;
+			arregloCarga = parseo(linea);
+			nombreCarga  = linea[0];
+			sizeCarga = sqrt(arregloCarga.size());
+			Matriz* matrixCarga = new Matriz(arregloCarga,sizeCarga,nombreCarga);
+			lista_matrices.push_back(matrixCarga);
+			
+		}
+	}
+	lectura.close();
+	
 	string entrada = "";
-	string buffer = "";
+	
 	vector<int> arreglo;
 	size_t found1;
 	size_t found2;
 	int size;
 	char name;
-	vector<Matriz*> lista_matrices;
+	
 	while(entrada != "exit"){
 		cout<<endl<<">>";
 		
@@ -44,7 +70,14 @@ int main(int argc, char** argv) {
 		found1 = entrada.find('+');
 		found2 = entrada.find('-');
 		if(found1 != std::string::npos || found2 != std::string::npos ){
-			
+			//for que recorre la cadena para saber la operacion;
+			for(int i = 0;i<entrada.size();i++){
+				for(int j=0;lista_matrices.size();i++){
+					if(entrada[i] == lista_matrices[j]->getNombre()){
+						
+					}
+				}
+			}
 		}else if(entrada != "exit"){
 			arreglo = parseo(entrada);
 			size = sqrt(arreglo.size());

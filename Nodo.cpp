@@ -1,7 +1,9 @@
 #include "Nodo.h"
 
-Nodo::Nodo()
+Nodo::Nodo(Object* Pdata)
 {
+	next_nodo = NULL;
+	data  =Pdata;
 }
 
 

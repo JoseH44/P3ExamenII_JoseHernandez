@@ -9,6 +9,7 @@ class Operador : public Object
 	char signo;
 	public:
 		Operador(char);
+		char getSigno();
 		~Operador();
 	
 };

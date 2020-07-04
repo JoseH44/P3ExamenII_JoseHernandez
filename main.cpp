@@ -73,6 +73,7 @@ int main(int argc, char** argv) {
 		found2 = entrada.find('-');
 		if(found1 != std::string::npos || found2 != std::string::npos ){
 			//for que recorre la cadena para saber la operacion;
+			//metodo incompleto
 			Stack* stack = new Stack();
 			for(int i = entrada.size();i >= 0;i--){
 				for(int j=0;lista_matrices.size();j++){
